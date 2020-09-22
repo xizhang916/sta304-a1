@@ -92,7 +92,7 @@ labs(x="Education level",
 On the X-axis,the education level is increasing from left to right(From "No Schooling" to "professional/doctorate degree").The specific order is same as the order in additional table stated below.
 
 Additional Table
-```{r setup, include=FALSE}
+```{r setup, echo=FALSE}
 Additional_table<-ces2019_web%>%count(cps19_education)
 ```
 
