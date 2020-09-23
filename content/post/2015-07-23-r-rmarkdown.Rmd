@@ -4,11 +4,12 @@ author: "Xi Zhang"
 date: "2020/9/11"
 categories: {"R"} 
 tags: {"R Markdown","plot","regression"}
-bibliography: "reference.bib"
+
 ---
 
-```{r setup, include=FALSE,message=FALSE}
-knitr::opts_chunk$set(echo = FALSE, message = FALSE)
+```{r include=FALSE}
+
+
 install.packages("tidyverse")
 library(tidyverse)
 install.packages("dplyr")
@@ -20,7 +21,7 @@ The highest level of education an individual has completed may affect many thing
 findings have implications for understanding the potential audience for the election.
 
 # Introduction
-We use @citetidyverse
+
 
 The 2019 federal election in Canada draws the the eyes of people around the world.While people do not usually have similar attitudes towards the election because they have different experiences.In this report,we study the dataset named CES2019_WEB,which was extracted from 2019 Canadian Election Study.In this case,we can get to know how the characteristics associated with the participants influence their views toward election.My findings may give suggestions to people who work on election advertisement.
 
@@ -34,8 +35,8 @@ The dataset used in this paper is called CES2019-WEB.It is extracted from the 20
 
 This dataset records participants' responses to a non-probability survey conducted for 2019 federal election.To be more detailed,the data within the set demonstrates the participants' personal information(gender,citizenship and education level,etc.),and their attitudes toward the election-related issues(parties of popular competitors and the new political policies regarding the election)
 
-```{r setup, include=FALSE,message=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+```{r include=FALSE}
+
 install.packages("devtools")
 devtools::install_github("hodgettsp/cesR")
 library(cesR)
@@ -44,12 +45,9 @@ cesR::get_ces("ces2019_web")
 ces2019_web<-to_factor(ces2019_web)
 
 ```
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-head(ces2019_web)
-```
 
-Here is the preview of the dataset called ces2019_web.We see that it contains 620 variables in total.A large fraction of them are categorical and a small part are numerical.
+
+
 
 ## Summary Statistics
 
@@ -73,8 +71,8 @@ Profession/doctorate degree
 
 #Graph
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+```{r echo=FALSE}
+
 ces2019_web %>%
   ggplot(aes(x=cps19_interest_elxn_1))+
   geom_histogram(bins = 20)+
@@ -83,8 +81,8 @@ labs(x="interest level",
        title="Distribution of interest level in 2019 CES(Gragh 1)",
        caption="Source:http://www.ces-eec.ca")
 ```
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+```{r echo=FALSE}
+
 ces2019_web %>%
   ggplot(aes(x=cps19_education,y=cps19_interest_elxn_1))+
   geom_boxplot()+
@@ -96,10 +94,15 @@ labs(x="Education level",
 On the X-axis,the education level is increasing from left to right(From "No Schooling" to "professional/doctorate degree").The specific order is same as the order in additional table stated below.
 
 Additional Table
-```{r setup, echo=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+```{r include=FALSE}
+
 Additional_table<-ces2019_web%>%count(cps19_education)
 ```
+Below is Additional table
+```{r echo=FALSE}
+Additional_table
+```
+
 
 
 
