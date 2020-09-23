@@ -56,31 +56,30 @@ The variable,CPS19_INTEREST_ELXN_1,is a discrete numerical variable and it recor
 Moreover,CPS19_EDUCATION is an ordinal categorical variable and records the highest education level completed by each participant.We observe that some participants do not want to tell their education level so they leave their responses as"Don't know/ Prefer not to answer".After removing these observations,we find that the highest education level completed by the participants ranges from "No Schooling" to "profession/doctorate degree".
 
 Specification:The variable,CPS2019_EDUCATION,contains 11 different education levels.The 11 groups are ordered.If we rank them from low to high,it will be:
-No schooling	
-Some elementary school	
-Completed elementary school	
-Some secondary/ high school	
-Completed secondary/ high school	
-Some technical, community college, CEGEP, College Classique	
-Completed technical, community college, CEGEP, College Classique	
-Some university	
-Bachelor's degree	
-Master's degree
-Profession/doctorate degree
+1.No schooling	
+2.Some elementary school	
+3.Completed elementary school	
+4.Some secondary/ high school	
+5.Completed secondary/ high school	
+6.Some technical, community college, CEGEP, College Classique	
+7. Completed technical, community college, CEGEP, College Classique	
+8.Some university	
+9.Bachelor's degree	
+10.Master's degree
+11.Profession/doctorate degree
 
 
 #Graph
 
 ```{r echo=FALSE}
-
-ces2019_web %>%
-  ggplot(aes(x=cps19_interest_elxn_1))+
-  geom_histogram(bins = 20)+
-labs(x="interest level",
+ces2019_web%>% ggplot(aes(x=cps19_interest_elxn_1))+geom_histogram()+
+  labs(x="Interest level",
        y="Number",
-       title="Distribution of interest level in 2019 CES(Gragh 1)",
+    
+       title="Distribution of Interest level (Graph 1)",
        caption="Source:http://www.ces-eec.ca")
 ```
+
 ```{r echo=FALSE}
 
 ces2019_web %>%
@@ -91,15 +90,19 @@ labs(x="Education level",
        title="Connnection between Interest level and education level(Graph 2)",
        caption="Source:http://www.ces-eec.ca")
 ```
-On the X-axis,the education level is increasing from left to right(From "No Schooling" to "professional/doctorate degree").The specific order is same as the order in additional table stated below.
+On the X-axis,the education level is increasing from left to right(From "No Schooling" to "professional/doctorate degree").The specific order is same as the order in additional table stated below
 
-Additional Table
+
+
+
+
+
 ```{r include=FALSE}
 
 Additional_table<-ces2019_web%>%count(cps19_education)
 ```
-Below is Additional table
-```{r echo=FALSE}
+
+```{r echo=TRUE}
 Additional_table
 ```
 
@@ -120,16 +123,6 @@ The graph 2 is a boxplot and it has "Education level"on the X-axis and "interest
 If we put the two findings above together,we can conclude that the higher education background one has obtained,the greater interest he may show towards the federal election.
 
 
-##Additional table
-
-If we combine the additional table with the other two plots,we can find that:
-
-Education level                               Median of interest level
-Completed secondary/ high school                        7.0
-Completed technical, community college,etc              8.0
-Bachelor's Degree                                       8.0
-
-These three groups are the top 3 largest groups in the survey.The medians tell us that fifty percent of participants obtaining "Completed secondary/ high school"rate their interest level above 7.Similarly,50% people within the other two groups rate above 8.This situation can explain why the distribution of interest levels is left skewed and most of the participants rate their interest levels above 7.
 
 
 #Weaknesses:
